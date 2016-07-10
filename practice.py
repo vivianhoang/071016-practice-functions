@@ -59,12 +59,7 @@ PART TWO:
     >>> write_letter("Jane Hacks", "Hacker", "Balloonicorn")
     Dear Hacker Jane Hacks, I think you are amazing! Sincerely, Balloonicorn
 
-    >>> nums = [1, 2]
-    >>> add_new_number(5, nums)
-    >>> nums
-    [1, 2, 5]
 
-    
     """
 ################################################################################
 
@@ -74,21 +69,58 @@ PART TWO:
 #    prints "Hello World".
 
 
+def hello_world():
+    """Prints 'Hello World'"""
+
+    print "Hello World"
+
+
 # 2. Write a function called 'say_hi' that takes a name as a string and
 #    prints "Hi" followed by the name.
+def say_hi(name):
+    """Says hi to the name called in"""
 
+    print "Hi {}".format(name)
 
 # 3. Write a function called 'print_product' that takes two integers and multiplies
 #    them together. Print the result.
 
 
+def print_product(x, y):
+    """Returns the product of 2 numbers"""
+
+    x = int(x)
+    y = int(y)
+    print x * y
+
 # 4. Write a function called 'repeat_string' that takes a string and an integer and
 #    prints the string that many times
 
 
+def repeat_string(word, number):
+    """Print a string out 'x' amount of times"""
+
+    word = str(word)
+    number = int(number)
+
+    print word * number
+
 # 5. Write a function called 'print_sign' that takes an integer and prints "Higher
 #    than 0" if higher than zero and "Lower than 0" if lower
 #    than zero. If the integer is 0 print "Zero".
+
+
+def print_sign(number):
+    """Checking a number to see if it is greater than, less than, or equal to 0"""
+
+    if number != int(number):
+        return "Please input a whole number with no decimals, try again."
+    if number > 0:
+        print "Higher than 0"
+    elif number < 0:
+        print "Lower than 0"
+    else:
+        print "Zero"
 
 
 # 6. Write a function called 'is_divisible_by_three' that takes an integer and returns a
@@ -96,8 +128,27 @@ PART TWO:
 #    is evenly divisible by 3.
 
 
+def is_divisible_by_three(number):
+    """Checking to see if a number is divisible by 3"""
+
+    if number != int(number):
+        return "Please input a whole number with no decimals and try again."
+    if number % 3 == 0:
+        return True
+    else:
+        return False
+
 # 7. Write a function called 'num_spaces' that takes a sentence as one string and
 #    returns the number of spaces.
+
+
+def num_spaces(words):
+    """Returning how many spaces there are in a particular sentence"""
+
+    spaces = words.split(' ')
+    total_spaces = len(spaces) - 1
+
+    return total_spaces
 
 
 # 8. Write a function called 'total_meal_price' that can be passed a meal price and a
@@ -106,6 +157,14 @@ PART TWO:
 #    percentage should be optional; if not given, it should
 #    default to 15%.
 
+
+def total_meal_price(price, tip=0.15):
+    """Computating the total of a meal including tip."""
+
+    meal_tip = float(price) * float(tip)
+    total_meal = float(price) + float(meal_tip)
+
+    return total_meal
 
 # 9. Write a function called 'sign_and_parity' that takes an integer as an argument and
 #    returns two pieces of information as strings ---
@@ -118,6 +177,33 @@ PART TWO:
 #    Print sign and parity.
 
 
+def sign_and_parity(number):
+    """Returning whether or not an integer is positive/negative and odd/even."""
+
+    number_type = []
+    if number > 0:
+        if number % 2 == 0:
+            number_type.append("Even")
+            number_type.append("Positive")
+            return number_type
+        else:
+            number_type.append("Odd")
+            number_type.append("Positive")
+            return number_type
+
+    elif number < 0:
+        if number % 2 == 0:
+            number_type.append("Even")
+            number_type.append("Negative")
+            return number_type
+        else:
+            number_type.append("Odd")
+            number_type.append("Negative")
+            return number_type
+
+    else:
+        return "Try inputing a whole number with no decimal points."
+
 ################################################################################
 # PART TWO
 
@@ -126,11 +212,26 @@ PART TWO:
 #    job title defaults to "Engineer" if a job title is not passed in.
 #    Return the person's title and name in one string.
 
+
+def full_title(name, job="Engineer"):
+    """Concatenating a person's name and job title"""
+
+    return job + ' ' + name
+
 # 2. Given a recipient name & job title and a sender name,
 #    print the following letter:
 #
 #       Dear JOB_TITLE RECIPIENT_NAME, I think you are amazing!
 #       Sincerely, SENDER_NAME.
+
+
+def write_letter(name, job, sender):
+    """Writing letter to said person."""
+
+    official_name = full_title(name, job)
+
+    print "Dear {}, I think you are amazing! Sincerely, {}".format(official_name, sender)
+
 #
 #    Use the function from #1 to construct the full title for the letter's
 #    greeting.
